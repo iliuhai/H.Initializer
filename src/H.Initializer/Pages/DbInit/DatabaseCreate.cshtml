@@ -1,0 +1,34 @@
+﻿@page
+@model H.Initializer.DbInit.Pages.DatabaseCreateModel
+@Html.AntiForgeryToken()
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>初始化</title>
+    <script type="text/javascript" src="~/lib/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/lib/util/common.js"></script>
+    <script type="text/javascript">
+        function CreateDatabase() {
+            $("#btnCreate").attr('disabled', true);
+
+            AjaxPostRequest('/DbInit/DatabaseCreate?handler=DatabaseCreate', {}, Callback);
+        }
+
+        function Callback(result) {
+            $("#btnCreate").attr('disabled', false);
+
+            window.location.href = result;
+        }
+    </script>
+</head>
+<body>
+    <div style="margin-left:auto;margin-right:auto; width:800px;">
+        <h3>数据库变更：</h3>
+        <hr />
+        <input type="button" id="btnCreate" onclick="CreateDatabase();" value="创建数据库" />
+    </div>
+</body>
+</html>
