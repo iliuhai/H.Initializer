@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace H.Initializer
 {
-    public class InitMiddlewareExtensions
+    public class InitializerMiddlewareExtensions
     {
         private readonly RequestDelegate _next;
 
-        public InitMiddlewareExtensions(RequestDelegate next)
+        public InitializerMiddlewareExtensions(RequestDelegate next)
         {
             _next = next;
         }

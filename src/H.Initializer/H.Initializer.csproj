@@ -21,11 +21,13 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Content Remove="wwwroot\lib\jquery\jquery-3.4.1.min.js" />
-    <Content Remove="wwwroot\lib\util\common.js" />
+    <Content Remove="wwwroot\css\site.css" />
+    <Content Remove="wwwroot\lib\bootstrap\bootstrap.min.css" />
+    <Content Remove="wwwroot\lib\bootstrap\bootstrap.min.css.map" />
+    <Content Remove="wwwroot\lib\jquery\jquery.min.js" />
   </ItemGroup>
   
   <ItemGroup>
-    <None Remove="wwwroot\logo\favicon.ico" />
+    <None Include="Pages\Shared\_Layout.cshtml" />
   </ItemGroup>
 </Project>

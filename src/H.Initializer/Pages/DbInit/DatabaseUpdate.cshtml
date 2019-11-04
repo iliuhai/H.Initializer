@@ -1,0 +1,22 @@
+﻿@page
+@model H.Initializer.DbInit.Pages.DatabaseUpdateModel
+@Html.AntiForgeryToken()
+@{
+    ViewData["Title"] = "更新数据库";
+}
+
+<div style="margin-left:auto;margin-right:auto;">
+    <input type="button" id="btnUpdate" onclick="UpdateDatabase()" value="迁移数据库" />
+</div>
+
+<script type="text/javascript">
+    function UpdateDatabase() {
+        $("#btnUpdate").attr('disabled', true);
+
+        AjaxPostRequest('/DbInit/DatabaseUpdate?handler=DatabaseUpdate', {}, Callback);
+    }
+
+    function Callback(result) {
+        window.location.href = result;
+    }
+</script>

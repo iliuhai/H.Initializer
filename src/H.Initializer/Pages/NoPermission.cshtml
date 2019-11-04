@@ -1,16 +1,9 @@
-﻿@page 
+﻿@page
 @model H.Initializer.Pages.NoPermissionModel
+@{
+    ViewData["Title"] = "没有访问权限";
+}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>初始化</title>
-</head>
-<body>
-    <h3>初始化：</h3>
-    <hr />
-    访问被拒绝，请联系管理员在服务器执行系统初始化...
-</body>
-</html>
+<div style="margin-left:auto;margin-right:auto; width:800px;">
+    没有权限访问此页面，请联系管理员在服务器执行系统初始化...
+</div>

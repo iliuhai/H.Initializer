@@ -2,33 +2,27 @@
 @model H.Initializer.DbInit.Pages.DatabaseCreateModel
 @Html.AntiForgeryToken()
 
-<!DOCTYPE html>
+@{
+    ViewData["Title"] = "创建数据库";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>初始化</title>
-    <script type="text/javascript" src="~/lib/jquery/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="~/lib/util/common.js"></script>
-    <script type="text/javascript">
-        function CreateDatabase() {
-            $("#btnCreate").attr('disabled', true);
+<div style="margin-left:auto;margin-right:auto; width:800px;">
+    <input type="button" id="btnCreate" onclick="CreateDatabase();" value="立即创建数据库" />
+    &emsp;&emsp;<label id="initTip"></label>
+</div>
 
-            AjaxPostRequest('/DbInit/DatabaseCreate?handler=DatabaseCreate', {}, Callback);
-        }
+<script type="text/javascript">
+    function CreateDatabase() {
+        $("#btnCreate").attr('disabled', true);
+        $("#initTip").text("正在初始化数据库......");
 
-        function Callback(result) {
-            $("#btnCreate").attr('disabled', false);
+        AjaxPostRequest('/DbInit/DatabaseCreate?handler=DatabaseCreate', {}, Callback);
+    }
 
-            window.location.href = result;
-        }
-    </script>
-</head>
-<body>
-    <div style="margin-left:auto;margin-right:auto; width:800px;">
-        <h3>数据库变更：</h3>
-        <hr />
-        <input type="button" id="btnCreate" onclick="CreateDatabase();" value="创建数据库" />
-    </div>
-</body>
-</html>
+    function Callback(result) {
+        $("#btnCreate").attr('disabled', false);
+        $("#initTip").text("初始化完成!");
+
+        window.location.href = result;
+    }
+</script>

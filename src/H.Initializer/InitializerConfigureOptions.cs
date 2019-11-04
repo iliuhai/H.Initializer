@@ -8,9 +8,9 @@ using System;
 
 namespace H.Initializer
 {
-    internal class InitConfigureOptions : IPostConfigureOptions<StaticFileOptions>
+    internal class InitializerConfigureOptions : IPostConfigureOptions<StaticFileOptions>
     {
-        public InitConfigureOptions(IHostingEnvironment environment)
+        public InitializerConfigureOptions(IHostingEnvironment environment)
         {
             Environment = environment;
         }

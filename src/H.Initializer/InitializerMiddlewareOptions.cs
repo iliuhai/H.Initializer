@@ -5,9 +5,9 @@ using System.Text;
 
 namespace H.Initializer
 {
-    public class InitMiddlewareOptions
+    public class InitializerMiddlewareOptions
     {
-        public InitMiddlewareOptions(string initUrl, string CallbackUrl)
+        public InitializerMiddlewareOptions(string initUrl, string CallbackUrl)
         {
             this.InitUrl = initUrl;
             this.CallbackUrl = CallbackUrl;

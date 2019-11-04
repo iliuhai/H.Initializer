@@ -17,11 +17,12 @@ namespace Test.Initializer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            string connString = "Data Source=(localdb1)\\MSSQLLocalDB;Initial Catalog=InitDb_Test;Integrated Security=True;";
+            string connString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=InitDb_Test;Integrated Security=True;";
             services.AddDbContext<SampleDbContext>(options => options.UseSqlServer(connString).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
             services.AddMvcCore();
             services.AddControllers();
+
             #region Swagger
             services.AddSwaggerGen(c =>
             {
@@ -41,7 +42,7 @@ namespace Test.Initializer
             #endregion
             
             services.AddRazorPages();
-            services.AddInit<SampleDbContext>();
+            services.AddInitializer<SampleDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +56,7 @@ namespace Test.Initializer
             app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseInit("/swagger");
+            app.UseInitializer("/swagger");
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

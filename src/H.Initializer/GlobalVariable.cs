@@ -15,7 +15,7 @@ namespace H.Initializer
         /// <summary>
         /// 数据库更新页面地址
         /// </summary>
-        internal static string DatabaseMigrateUrl { get { return "/DbInit/DatabaseMigrate"; } }
+        internal static string DatabaseUpdateUrl { get { return "/DbInit/DatabaseUpdate"; } }
 
         /// <summary>
         /// 数据库异常页面地址
@@ -28,9 +28,9 @@ namespace H.Initializer
         internal static bool CanConnect { get; set; }
 
         /// <summary>
-        /// 数据库是否已迁移
+        /// 数据库是否已更新
         /// </summary>
-        internal static bool IsMigrated { get; set; }
+        internal static bool IsUpdated{ get; set; }
         
         /// <summary>
         /// 初始化完成重定向地址
