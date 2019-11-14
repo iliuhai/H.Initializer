@@ -19,10 +19,15 @@ namespace H.Initializer
             GlobalVariable.DbContext = p.GetService<TDbContext>();
         }
 
-        public static void UseInitializer(this IApplicationBuilder app, string callbackUrl)
+        /// <summary>
+        /// 启动初始化中间件
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="callbackUrl">初始化完成后重定向地址，默认根目录</param>
+        public static void UseInitializer(this IApplicationBuilder app, string callbackUrl = "/")
         {
             if (string.IsNullOrWhiteSpace(callbackUrl))
-                throw new ArgumentNullException("callbackUrl is empty");
+                callbackUrl = "/";
 
             GlobalVariable.CallbackUrl = callbackUrl;
             app.UseMiddleware<InitializerMiddlewareExtensions>();
