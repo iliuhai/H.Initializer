@@ -10,17 +10,22 @@ namespace H.Initializer
         /// <summary>
         /// 数据库创建页面地址
         /// </summary>
-        internal static string DatabaseCreateUrl { get { return "/DbInit/DatabaseCreate"; } }
+        internal static string DatabaseCreateUrl { get { return "/Init/DatabaseCreate"; } }
 
         /// <summary>
         /// 数据库更新页面地址
         /// </summary>
-        internal static string DatabaseUpdateUrl { get { return "/DbInit/DatabaseUpdate"; } }
+        internal static string DatabaseUpdateUrl { get { return "/Init/DatabaseUpdate"; } }
 
         /// <summary>
-        /// 数据库异常页面地址
+        /// 初始化异常页面地址
         /// </summary>
-        internal static string DatabaseExceptionUrl { get { return "/DatabaseException"; } }
+        internal static string InitExceptionUrl { get { return "/Init/InitException"; } }
+
+        /// <summary>
+        /// 无权限页面地址
+        /// </summary>
+        internal static string NoPermissionUrl { get { return "/Init/NoPermission"; } }
 
         /// <summary>
         /// 数据库是否可连接

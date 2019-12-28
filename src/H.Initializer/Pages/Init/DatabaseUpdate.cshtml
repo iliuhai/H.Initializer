@@ -1,5 +1,5 @@
 ﻿@page
-@model H.Initializer.DbInit.Pages.DatabaseUpdateModel
+@model H.Initializer.Init.Pages.DatabaseUpdateModel
 @Html.AntiForgeryToken()
 @{
     ViewData["Title"] = "更新数据库";
@@ -13,7 +13,7 @@
     function UpdateDatabase() {
         $("#btnUpdate").attr('disabled', true);
 
-        AjaxPostRequest('/DbInit/DatabaseUpdate?handler=DatabaseUpdate', {}, Callback);
+        AjaxPostRequest('/Init/DatabaseUpdate?handler=Migrate', {}, Callback);
     }
 
     function Callback(result) {

@@ -45,7 +45,7 @@ namespace H.Initializer
             }
             catch
             {
-                string databaseExceptionUrl = context.Request.Scheme + "://" + context.Request.Host + GlobalVariable.DatabaseExceptionUrl;
+                string databaseExceptionUrl = context.Request.Scheme + "://" + context.Request.Host + GlobalVariable.InitExceptionUrl;
                 if(currentUrl == databaseExceptionUrl)
                 {
                     await _next(context);

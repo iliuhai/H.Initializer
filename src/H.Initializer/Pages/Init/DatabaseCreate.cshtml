@@ -1,0 +1,30 @@
+﻿@page
+@model H.Initializer.Init.Pages.DatabaseCreateModel
+@Html.AntiForgeryToken()
+
+@{
+    ViewData["Title"] = "创建数据库";
+}
+
+<div style="margin-left:auto;margin-right:auto; width:800px;">
+    <input type="button" id="btnCreate" onclick="CreateDatabase();" value="立即创建数据库" />
+    &emsp;&emsp;<label id="initTip"></label>
+</div>
+
+<script type="text/javascript">
+    function CreateDatabase() {
+        $("#btnCreate").attr('disabled', true);
+        $("#btnCreate").val("正在创建数据库...");
+        //$("#initTip").text("正在创建数据库......");
+
+        AjaxPostRequest('/Init/DatabaseCreate?handler=Ensure', {}, Callback);
+    }
+
+    function Callback(result) {
+        $("#btnCreate").attr('disabled', false);
+        $("#btnCreate").val("立即创建数据库");
+        //$("#initTip").text("数据库创建完成!");
+
+        window.location.href = result;
+    }
+</script>

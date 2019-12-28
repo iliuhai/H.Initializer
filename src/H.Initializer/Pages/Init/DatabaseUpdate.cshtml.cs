@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace H.Initializer.DbInit.Pages
+namespace H.Initializer.Init.Pages
 {
     public class DatabaseUpdateModel : PageModel
     {
@@ -14,7 +14,7 @@ namespace H.Initializer.DbInit.Pages
             _dbContext = GlobalVariable.DbContext;
         }
 
-        public IActionResult OnPostDatabaseUpdate()
+        public IActionResult OnPostMigrate()
         {
             if (_dbContext == null)
                 throw new NullReferenceException("DbContext is null");
@@ -33,9 +33,9 @@ namespace H.Initializer.DbInit.Pages
                 GlobalVariable.IsUpdated = true;
                 return new JsonResult(GlobalVariable.CallbackUrl);
             }
-            finally
+            catch
             {
-                _dbContext.Dispose();
+                return new JsonResult(GlobalVariable.InitExceptionUrl);
             }
         }
     }
