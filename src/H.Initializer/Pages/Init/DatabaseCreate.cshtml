@@ -23,8 +23,11 @@
     function Callback(result) {
         $("#btnCreate").attr('disabled', false);
         $("#btnCreate").val("立即创建数据库");
-        //$("#initTip").text("数据库创建完成!");
-
-        window.location.href = result;
+        if (result.success) {
+            window.location.href = result.data;
+        }
+        else {
+            $("#btnCreate").text(result.message);
+        }
     }
 </script>

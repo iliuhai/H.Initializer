@@ -22,7 +22,7 @@ namespace H.Initializer.Init.Pages
             if (GlobalVariable.IsUpdated)
             {
                 _dbContext.Dispose();
-                return new JsonResult(GlobalVariable.CallbackUrl);
+                return new JsonResult(new { success = true, message = "", data = GlobalVariable.CallbackUrl });
             }
 
             try
@@ -31,11 +31,11 @@ namespace H.Initializer.Init.Pages
                 //if (!bol)
                 //    throw new Exception("EnsureCreated is failed!");
                 GlobalVariable.IsUpdated = true;
-                return new JsonResult(GlobalVariable.CallbackUrl);
+                return new JsonResult(new { success = true, message = "", data = GlobalVariable.CallbackUrl });
             }
-            catch
+            catch (Exception ex)
             {
-                return new JsonResult(GlobalVariable.InitExceptionUrl);
+                return new JsonResult(new { success = true, message = "", data = ex.Message });
             }
         }
     }

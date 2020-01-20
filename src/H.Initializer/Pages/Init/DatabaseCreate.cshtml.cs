@@ -24,12 +24,12 @@ namespace H.Initializer.Init.Pages
         public IActionResult OnPostEnsure()
         {
             if (_dbContext == null)
-                throw new NullReferenceException("DbContext is null");
+                return new JsonResult(new { success = true, message = "", data = "DbContext is null" });
 
             if (GlobalVariable.CanConnect)
             {
                 _dbContext.Dispose();
-                return new JsonResult(GlobalVariable.CallbackUrl);
+                return new JsonResult(new { success = true, message = "", data = GlobalVariable.CallbackUrl });
             }
 
             try
@@ -38,11 +38,11 @@ namespace H.Initializer.Init.Pages
                 if (!bol)
                     throw new Exception("EnsureCreated is failed!");
                 GlobalVariable.CanConnect = true;
-                return new JsonResult(GlobalVariable.CallbackUrl);
+                return new JsonResult(new { success = true, message = "", data = GlobalVariable.CallbackUrl });
             }
-            catch
+            catch (Exception ex)
             {
-                return new JsonResult(GlobalVariable.InitExceptionUrl);
+                return new JsonResult(new { success = true, message = "", data = ex.Message });
             }
         }
     }
